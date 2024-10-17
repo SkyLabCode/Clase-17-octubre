@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array y números</title>
+</head>
+<body>
+
+    <h2>Media de números introducidos en un array</h2>
+    <input type="number" id="number">
+    <button type="button" id="btn-add">Añadir número</button>
+    <button type="button" id="btn-average">Calcular media</button>
+    <h5 id="result"></h5>
+
+    <p id="length"></p>
+
+    <script>
+
+        /*
+            1. Debemos evitar que el usuario introduzca el número 0.
+            2. Cada vez que introduzcamos un numero, se debe mostrar 
+            en pantalla la cantidad de números que contiene el array
+            3. Si hemos introducido 10 numeros, ya no debe permitir
+            introducir más
+            4. Debemos añadir un botón para reiniciar el array
+            1. Creamos un botón
+            2. Accedemos al botón
+            3. declaramos el evento sobre el boton
+            4. Vaciamos el array (numbers = [])
+            5. Pasamos a cero la etiqueta <p id="length"></p>
+        */
+
+
+
+        //Accedemos a los botones:
+        const btnAdd = document.getElementById('btn-add');
+        const btnAverage = document.getElementById('btn-average');
+        //Accedemos a la etiqueta del resultado:
+        var result = document.getElementById('result');
+        //Array vacío para añadir los números:
+        var numbers = [];
+
+
+        var length = document.getElementById('length');
+
+        //Evento para añadir números:
+        btnAdd.onclick = () => {
+            //Recogemos el valor del input
+            var number = document.getElementById('number').value;
+
+            //Comprobar que el usuario ha introducido un número
+            if(number == '' || number == 0){
+                alert('Debes introducir un número mayor que cero');
+                //Sentencia que finaliza la función/Evento
+                return;
+            }
+
+            if(numbers.length == 10){
+                alert('Ya has introducido 10 números');
+                return;
+            }
+
+            //Añadir el número al array y lo convertimos a float:
+            numbers.push(parseFloat(number));
+            console.log(numbers);
+            //Limpiamos el input:
+            document.getElementById('number').value = "";
+
+            //Mostramos la cantidad de números:
+            length.innerHTML = numbers.length;
+
+        }
+
+        //Evento para calcular la media
+        btnAverage.onclick = () => {
+            //Recorrer el array para sumar los números
+            //Bucle para recorrer un array:
+            //for(Por cada número del array numeros)
+            var suma = 0;
+            for(var num of numbers){
+                suma += num; //suma = suma + num
+            }
+            //Calculamos la media y mostramos el resultado en la etiqueta
+            var media = suma / numbers.length;
+            result.innerHTML = media;
+
+        }
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
