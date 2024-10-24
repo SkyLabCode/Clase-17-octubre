@@ -11,6 +11,7 @@
     <input type="number" id="number">
     <button type="button" id="btn-add">Añadir número</button>
     <button type="button" id="btn-average">Calcular media</button>
+    <button type="button" id="btn-reset">Reset</button>
     <h5 id="result"></h5>
 
     <p id="length"></p>
@@ -88,8 +89,12 @@
         }
 
 
+        const btnReset = document.getElementById("btnReset");
 
-
+        btnReset.onclick = () => {
+            numeros = [];
+            result.innerHTML = "";
+        }
 
     </script>
     
